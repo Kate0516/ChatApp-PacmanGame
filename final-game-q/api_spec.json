@@ -1,0 +1,232 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Team Q Pacman",
+    "description": "This is API specification documents Team Q's API for the Pacman game.",
+    "version": "1.0.0"
+  },
+  "host": "www",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/init": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successfully created a new game board",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "boardId": {
+                  "type": "string",
+                  "example": 10
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{boardId}/board": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "boardId",
+            "in": "path",
+            "description": "the id of the game board",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully got board data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "score": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 10
+                },
+                "level": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 2
+                },
+                "life": {
+                  "type": "integer",
+                  "format": "int32",
+                  "example": 3
+                },
+                "board": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": [
+                    [
+                      1,
+                      2,
+                      3
+                    ],
+                    [
+                      4,
+                      5,
+                      1
+                    ],
+                    [
+                      2,
+                      3,
+                      4
+                    ]
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "game board id not found"
+          }
+        }
+      }
+    },
+    "/{boardId}/change/{direction}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "direction",
+            "in": "path",
+            "description": "The direction to change the pacman. Should be one of {up, down, right, left}",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "boardId",
+            "in": "path",
+            "description": "the id of the game board",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully changed the direction for the user"
+          },
+          "400": {
+            "description": "Input direction is not valid. direction should be one of {up, down, right, left}"
+          },
+          "404": {
+            "description": "game board id not found"
+          }
+        }
+      }
+    },
+    "/{boardId}/reset": {
+      "get": {
+        "parameters": [
+          {
+            "name": "boardId",
+            "in": "path",
+            "description": "the id of the game board",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reset the game"
+          },
+          "404": {
+            "description": "game board id not found"
+          }
+        }
+      }
+    },
+    "/{boardId}/start": {
+      "get": {
+        "parameters": [
+          {
+            "name": "boardId",
+            "description": "the id of the game board",
+            "type": "string",
+            "required": true,
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Start the game"
+          },
+          "400": {
+            "description": "game already started"
+          },
+          "404": {
+            "description": "game board id not found"
+          }
+        }
+      }
+    },
+    "/{boardId}/setGhost/": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ghostNum",
+            "description": "number of ghost in game, should be 3 - 8",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ghostNum": {
+                  "type": "integer",
+                  "example": 3
+                }
+              }
+            }
+          },
+          {
+            "name": "boardId",
+            "description": "the id of the game board",
+            "type": "string",
+            "required": true,
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successfully set ghost num"
+          },
+          "400": {
+            "description": "ghost num invalid, should be 3 - 8"
+          },
+          "404": {
+            "description": "board id not found"
+          }
+        }
+      }
+    }
+  }
+}

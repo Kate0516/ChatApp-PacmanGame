@@ -1,0 +1,31 @@
+::-webkit-scrollbar {display:none;}
+
+.message-list {
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    /* color: white; */
+    color: #4E4E4E;
+}
+
+.message-info {
+    margin-left: 20px;
+}
+
+.message-timestamp {
+    color: gray;
+    margin-left: 20px;
+    font-size: x-small;
+}
+
+.message-body {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+}

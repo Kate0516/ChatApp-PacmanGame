@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Team Q</title>
+
+    <style>
+        @font-face {
+            font-family: 'CottonButter';
+            src: url('./resource/Cotton Butter.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        #pacman {
+            height: 588px;
+            width: 504px;
+            margin: 20px auto;
+        }
+
+        #shim {
+            font-family: CottonButter;
+            position: absolute;
+            visibility: hidden
+        }
+
+        h1 {
+            font-family: CottonButter;
+            text-align: center;
+        }
+
+        body {
+            width: 504px;
+            margin: 0px auto;
+            font-family: sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="shim">shim for font face</div>
+
+<h1>Team Q Pacman</h1>
+<img id="banana"
+     src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1524180/Banana.png"
+     width="100" height="100" hidden>
+<img id="apple"
+     src="./resource/apple.png"
+     width="100" height="100" hidden>
+<div id="pacman"></div>
+<dialog title="Init Game" id="initDialog">
+        <fieldset>
+            <label for="ghost">Ghost</label>
+            <input type="text" name="ghost" id="ghost" value="4"
+                   class= "text ui-widget-content ui-corner-all" />
+            <label for="life">Life</label>
+            <input type="text" name="life" id="life"
+                   value="3" class="text ui-widget-content ui-corner-all" />
+            <button id="startBtn">Start Game</button>
+            <br/>
+            <p hidden id="init-warning"></p>
+
+        </fieldset>
+</dialog>
+
+<script src="index.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script>
+    PACMAN.init(document.getElementById("pacman"));
+</script>
+
+</body>
+</html>

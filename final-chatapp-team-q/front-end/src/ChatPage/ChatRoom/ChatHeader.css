@@ -1,0 +1,27 @@
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* color: gray; */
+    background-color: #0D2566;
+    padding: 10px;
+}
+
+.chat-header-room-name {
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.chat-header-room-id {
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}
+
+/* .chat-header-right {
+    display: flex;
+    align-items: center;
+    flex: 0.5;
+    justify-content: space-between;
+} */
